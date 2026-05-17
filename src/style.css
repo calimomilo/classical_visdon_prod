@@ -44,6 +44,11 @@ img#scroll-arrow {
     height: calc(15 * 15px + 14 * 3px + 0.75rem);
     gap: 3px;
 }
+/* 
+.stat-box:hover .cell:not(:hover) {
+    background-color: #e8e1db;
+    outline: #e8e1db;
+} */
 
 .stat-message {
     width: 300px;
@@ -61,50 +66,40 @@ img#scroll-arrow {
     font-size: 0.8rem;
 }
 
-.unknown {
+.cell.unknown {
     background-color: #7A7067;
-    outline: #7A7067;
+    outline-color: #7A7067;
 }
-.known {
+.cell.known {
     background-color: #D44127;
     outline-color: #D44127;
 }
-.bt-false {
+.cell.bt-false {
     background-color: #EAAA5C;
-    outline: #EAAA5C;
+    outline-color: #EAAA5C;
 }
-.bt-composer {
+.cell.bt-composer {
     background-color: #2D5D8B;
-    outline: #2D5D8B;
+    outline-color: #2D5D8B;
 }
-.bt-title {
+.cell.bt-title {
     background-color: #A3C3E1;
-    outline: #A3C3E1;
+    outline-color: #A3C3E1;
 }
-.bt-both {
+.cell.bt-both {
     background-color: #A1B441;
-    outline: #A1B441;
+    outline-color: #A1B441;
 }
 
-/* 
-.unknown { 2D5D8B A3C3E1
-    background-color: darkred;
+.cell.empty {
+    background-color: #e8e1db;
+    outline: #e8e1db;
 }
-.known {
-    background-color: blue;
+
+.cell.faded {
+    filter: opacity(40%) saturate(60%) sepia(30%);
+
 }
-.bt-false {
-    background-color: skyblue;
-}
-.bt-composer {
-    background-color: yellow;
-}
-.bt-title {
-    background-color: lemonchiffon;
-}
-.bt-both {
-    background-color: pink;
-} */
 
 .highlight {
     /* border-radius: 0; */
@@ -120,9 +115,6 @@ img#scroll-arrow {
     position: relative;
     left: 3px;
     top: -8px;
-}
-.empty {
-    background-color: #e8e1db;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

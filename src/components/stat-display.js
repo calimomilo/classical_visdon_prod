@@ -104,65 +104,65 @@ customElements.define("stat-display", class extends HTMLElement {
         const labels = document.createElement('div');
         labels.setAttribute('class', 'd-flex flex-column gap-2');
         labels.innerHTML = stats ? `
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-both"></div>
-                <p class="m-0">Deviné le compositeur et le titre : ${stats['bt-both']} réponses (${Math.round(stats['bt-both']*100/total)}%)</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-both label"></div>
+                <p class="m-0 bt-both ps-2 label">Deviné le compositeur et le titre : ${stats['bt-both']} réponses (${Math.round(stats['bt-both']*100/total)}%)</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-title"></div>
-                <p class="m-0">Deviné le titre : ${stats['bt-title']} réponses (${Math.round(stats['bt-title']*100/total)}%)</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-title label"></div>
+                <p class="m-0 bt-title ps-2 label">Deviné le titre : ${stats['bt-title']} réponses (${Math.round(stats['bt-title']*100/total)}%)</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-composer"></div>
-                <p class="m-0">Deviné le compositeur : ${stats['bt-composer']} réponses (${Math.round(stats['bt-composer']*100/total)}%)</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-composer label"></div>
+                <p class="m-0 bt-composer ps-2 label">Deviné le compositeur : ${stats['bt-composer']} réponses (${Math.round(stats['bt-composer']*100/total)}%)</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-false"></div>
-                <p class="m-0">Deviné ni le compositeur ni le titre : ${stats['bt-false']} réponses (${Math.round(stats['bt-false']*100/total)}%)</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-false label"></div>
+                <p class="m-0 bt-false ps-2 label">Deviné ni le compositeur ni le titre : ${stats['bt-false']} réponses (${Math.round(stats['bt-false']*100/total)}%)</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell known"></div>
-                <p class="m-0">Déjà entendu : ${stats['known']} réponses (${Math.round(stats['known']*100/total)}%)</p>
+            <div class="d-flex align-items-center">
+                <div class="cell known label"></div>
+                <p class="m-0 known ps-2 label">Déjà entendu : ${stats['known']} réponses (${Math.round(stats['known']*100/total)}%)</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell unknown"></div>
-                <p class="m-0">Jamais entendu : ${stats['unknown']} réponses (${Math.round(stats['unknown']*100/total)}%)</p>
+            <div class="d-flex align-items-center">
+                <div class="cell unknown label"></div>
+                <p class="m-0 unknown ps-2 label">Jamais entendu : ${stats['unknown']} réponses (${Math.round(stats['unknown']*100/total)}%)</p>
             </div>
         `
         : `
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-both"></div>
-                <p class="m-0">Deviné le compositeur et le titre</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-both label"></div>
+                <p class="m-0 bt-both ps-2 label">Deviné le compositeur et le titre</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-title"></div>
-                <p class="m-0">Deviné le titre</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-title label"></div>
+                <p class="m-0 bt-title ps-2 label">Deviné le titre</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-composer"></div>
-                <p class="m-0">Deviné le compositeur</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-composer label"></div>
+                <p class="m-0 bt-composer ps-2 label">Deviné le compositeur</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell bt-false"></div>
-                <p class="m-0">Deviné ni le compositeur ni le titre</p>
+            <div class="d-flex align-items-center">
+                <div class="cell bt-false label"></div>
+                <p class="m-0 bt-false ps-2 label">Deviné ni le compositeur ni le titre</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell known"></div>
-                <p class="m-0">Déjà entendu</p>
+            <div class="d-flex align-items-center">
+                <div class="cell known label"></div>
+                <p class="m-0 known ps-2 label">Déjà entendu</p>
             </div>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="cell unknown"></div>
-                <p class="m-0">Jamais entendu</p>
+            <div class="d-flex align-items-center">
+                <div class="cell unknown label"></div>
+                <p class="m-0 unknown ps-2 label">Jamais entendu</p>
             </div>
         `
 
@@ -236,13 +236,12 @@ customElements.define("stat-display", class extends HTMLElement {
             stats[title['pivot']['result']] ++;
         });
 
-        console.log(userTitles, stats);
         const waffle = this.createWaffle(120, stats, 'self');
         
         const total = [stats['unknown'], stats['known'], stats['bt-false'], stats['bt-composer'],stats['bt-title'],stats['bt-both']].reduce(((a, b) => a + b), 0);
         const message = document.createElement('p');
-        message.innerText = `Vous avez déjà découvert ${total} pièces.
-        Votre score est de ${stats['bt-composer'] + stats['bt-title'] + 2*stats['bt-both']}/${total*2} (Max. 228).
+        message.innerText = `Tu as déjà découvert ${total} pièces.
+        Ton score actuel est de ${stats['bt-composer'] + stats['bt-title'] + 2*stats['bt-both']}.
         `
         
         const box = document.createElement('div');
@@ -270,8 +269,6 @@ customElements.define("stat-display", class extends HTMLElement {
 
         const total = [statsArray['total']['unknown'], statsArray['total']['known'], statsArray['total']['bt-false'], statsArray['total']['bt-composer'],statsArray['total']['bt-title'],statsArray['total']['bt-both']].reduce(((a, b) => a + b), 0);
 
-        console.log(total);
-
         const waffle = this.createWaffleAlt(120, stats, total);
         const labels = this.createLabels(stats);
 
@@ -287,12 +284,59 @@ customElements.define("stat-display", class extends HTMLElement {
 
         if (this.getAttribute('filter').startsWith('title-')) {
             const id = this.getAttribute('filter').slice(6);
-            this.loadTitleStats(id);
+            await this.loadTitleStats(id);
         } else if (this.getAttribute('filter') === 'self') {
-            this.loadUserStats();
+            await this.loadUserStats();
         } else {
-            this.loadGlobalStats(this.getAttribute('filter'));
+            await this.loadGlobalStats(this.getAttribute('filter'));
         }
+
+        document.querySelectorAll('.stat-box').forEach((box) => {
+            console.log(box);
+            box.addEventListener('mouseover', (e) => {
+                if (e.target.closest('.cell')) {
+                    const hovered = e.target.closest('.cell').classList[1];
+                    document.querySelectorAll('.cell').forEach((square) => {
+                        if(hovered !== 'empty') {
+                            if(square.classList.contains(hovered)) {
+                                square.classList.remove('empty');
+                            } else {
+                                square.classList.add('empty');
+                            }
+                        }
+                    })
+                }
+            });
+            box.addEventListener('mouseleave', () => {
+                document.querySelectorAll('.cell').forEach((square) => {
+                    if(square.classList[1] !== 'empty') {
+                        square.classList.remove('empty');
+                    }
+                })
+            })
+        })
+
+        document.querySelectorAll('.label').forEach((el) => {
+            el.addEventListener('mouseover', (e) => {
+                const hovered = e.target.classList[1];
+                document.querySelectorAll('.cell').forEach((square) => {
+                    if(hovered !== 'empty') {
+                        if(square.classList.contains(hovered)) {
+                            square.classList.remove('empty');
+                        } else {
+                            square.classList.add('empty');
+                        }
+                    }
+                })
+            })
+            el.addEventListener('mouseleave', () => {
+                document.querySelectorAll('.cell').forEach((square) => {
+                    if(square.classList[1] !== 'empty') {
+                        square.classList.remove('empty');
+                    }
+                })
+            })
+        })
     }
 
 })
